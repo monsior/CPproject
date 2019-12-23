@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\main.cpp(8,55): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\main.cpp(8,40): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\main.cpp(15,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\main.cpp(15,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  SFMLGame.vcxproj -> C:\Users\Pawel\source\repos\SFMLGame\Debug\SFMLGame.exe
