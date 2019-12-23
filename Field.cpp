@@ -1,4 +1,5 @@
 #include "Field.h"
+#include <iostream>
 
 
 Field::Field() 
@@ -18,4 +19,16 @@ void Field::setPosition(float t_X, float t_Y)
 {
 	sprite.setPosition(t_X, t_Y);
 }
+
+sf::Vector2f Field::getPosition()
+{
+	return sprite.getPosition(); 
+}
+
+void Field::changeColor()
+{
+	texture.loadFromFile("fieldActive.png");
+	sprite.setTexture(texture);
+}
+
 
