@@ -6,8 +6,6 @@ public:
 	Field();
 	~Field() = default;
 	void setPosition(float t_X, float t_Y);
-	sf::Vector2f getPosition();
-	void changeColor();
 private:
 	sf::Texture texture;
 	sf::Sprite sprite;
