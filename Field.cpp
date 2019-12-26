@@ -1,9 +1,9 @@
 #include "Field.h"
 
-Field::Field() 
+Field::Field()
 {
 	texture.loadFromFile("field.png");
-	sprite.setPosition(0, 0); 
+	sprite.setPosition(0, 0);
 	sprite.setTexture(texture);
 }
 

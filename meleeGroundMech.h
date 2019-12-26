@@ -6,7 +6,5 @@ class meleeGroundMech : public Figure
 public:
 	meleeGroundMech();
 	~meleeGroundMech() = default;
-	void move(sf::Vector2i, sf::Vector2f);
-
+	void move(sf::Vector2i pixelPos);
 };
-

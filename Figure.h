@@ -13,8 +13,7 @@ public:
 	bool isActive();
 	void makeInactive();
 	friend class meleeGroundMech;
-	//void setTexture();
 private:
-	bool active; 
+	bool active;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 };
