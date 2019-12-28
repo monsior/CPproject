@@ -7,46 +7,49 @@ meleeGroundMech::meleeGroundMech()
 	sprite.setTexture(texture);
 }
 
-void meleeGroundMech::move(sf::Vector2i pixelPos)
+void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 {
-	// move left
-	if (pixelPos.x < sprite.getPosition().x && pixelPos.x > sprite.getPosition().x - 100)
+	if (active)
 	{
-		setPosition(sprite.getPosition().x - 100, sprite.getPosition().y);
+		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) - 1].makeFieldInactive(); 
+		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75)].makeFieldInactive();
+		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) + 1].makeFieldInactive();
+		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) - 1].makeFieldInactive();
+		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) + 1].makeFieldInactive();
+		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) - 1].makeFieldInactive();
+		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75)].makeFieldInactive();
+		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) + 1].makeFieldInactive();
 		makeInactive();
 	}
-	// move right
-	else if (pixelPos.x > sprite.getPosition().x + 100 && pixelPos.x < sprite.getPosition().x + 200)
+	else
 	{
-		setPosition(sprite.getPosition().x + 100, sprite.getPosition().y);
-		makeInactive();
-	}
-	// move up
-	if (pixelPos.y < sprite.getPosition().y && pixelPos.y > sprite.getPosition().y-75)
-	{
-		setPosition(sprite.getPosition().x, sprite.getPosition().y - 75);
-		makeInactive();
-	}
-
-	// move down
-	else if (pixelPos.y > sprite.getPosition().y + 75 && pixelPos.y < sprite.getPosition().y + 150)
-	{
-		setPosition(sprite.getPosition().x, sprite.getPosition().y + 75);
-		makeInactive();
+		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) - 1].makeFieldActive();
+		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75)].makeFieldActive();
+		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) + 1].makeFieldActive();
+		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) - 1].makeFieldActive();
+		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) + 1].makeFieldActive();
+		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) - 1].makeFieldActive();
+		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75)].makeFieldActive();
+		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) + 1].makeFieldActive();
+		makeActive();
 	}
 }
 
-//void meleeGroundMech::moveDown()
-//{
-//	setPosition(sprite.getPosition().x, sprite.getPosition().y - 75);
-//}
-//
-//void meleeGroundMech::moveRight()
-//{
-//	setPosition(sprite.getPosition().x + 100, sprite.getPosition().y);
-//}
-//
-//void meleeGroundMech::moveLeft()
-//{
-//	setPosition(sprite.getPosition().x-100, sprite.getPosition().y);
-//}
+void meleeGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
+{
+	if ((*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].possibleMove)
+	{
+		sprite.setPosition(((mousePos.x / 100)*100), ((mousePos.y / 75))*75);
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				((*p_field)[(i)][j]).makeFieldInactive();
+			}
+		}
+		makeInactive();
+	}
+	
+}
+
+

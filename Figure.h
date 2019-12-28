@@ -6,13 +6,15 @@ class Figure : public sf::Drawable
 public:
 	Figure();
 	~Figure() = default;
-	void selectFigure();
+	virtual void selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos);
 	void setPosition(float t_X, float t_Y);
 	sf::Sprite sprite;
 	sf::Texture texture;
 	bool isActive();
 	void makeInactive();
+	void makeActive();
 	friend class meleeGroundMech;
+	sf::Uint8 Dark = 150;
 private:
 	bool active;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;

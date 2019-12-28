@@ -1,7 +1,7 @@
 #include "Figure.h"
 #include <iostream>
 
-sf::Uint8 Dark = 150;
+
 
 Figure::Figure()
 {
@@ -14,17 +14,17 @@ void Figure::draw(sf::RenderTarget& target, sf::RenderStates state) const
 	target.draw(this->sprite, state);
 }
 
-void Figure::selectFigure()
+void Figure::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 {
 	if (active)
 	{
-		sprite.setColor(sf::Color::White);
-		active = false;
+		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].makeFieldInactive();
+		makeActive();
 	}
 	else
 	{
-		sprite.setColor(sf::Color(Dark, Dark, Dark));
-		active = true;
+		(*p_field)[mousePos.x / 100][mousePos.y / 75].makeFieldActive();
+		makeInactive();
 	}
 }
 
@@ -40,6 +40,12 @@ bool Figure::isActive()
 
 void Figure::makeInactive()
 {
-	active = true;
-	selectFigure();
+	sprite.setColor(sf::Color::White);
+	//active = true; 
+}
+
+void Figure::makeActive()
+{
+	sprite.setColor(sf::Color(Dark, Dark, Dark));
+	//active = false;
 }
