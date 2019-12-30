@@ -1,4 +1,5 @@
 #include "Field.h"
+#include <iostream>
 
 Field::Field()
 {
@@ -20,8 +21,15 @@ void Field::setPosition(float t_X, float t_Y)
 
 void Field::makeFieldActive()
 {
+	//if (sprite.getPosition().x >= 0 && sprite.getPosition().x <= 800 && sprite.getPosition().y > 0 && sprite.getPosition().y <= 600)
+	//{
+	//std::cout << sprite.getPosition().y;
+	
 	possibleMove = true;
 	sprite.setColor(sf::Color::Blue);
+	//}
+	//std::cout << sprite.getPosition().y << std::endl;
+	
 }
 
 void Field::makeFieldInactive()

@@ -49,3 +49,13 @@ void Figure::makeActive()
 	sprite.setColor(sf::Color(Dark, Dark, Dark));
 	//active = false;
 }
+
+
+bool Figure::isNeighbour(int x, int y, int n_X, int n_Y)
+{
+	if (((x - n_X == 1 || x - n_X == -1) && (y - n_Y == 1 || y - n_Y == -1 || y - n_Y == 0)) || (x - n_X == 0 && (y - n_Y == 1 || y - n_Y == -1)))
+	{
+		return true;
+	}
+	return false;
+}

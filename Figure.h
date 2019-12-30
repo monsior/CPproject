@@ -18,4 +18,6 @@ public:
 private:
 	bool active;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
+protected:
+	bool isNeighbour(int x, int y, int n_X, int n_Y); 
 };

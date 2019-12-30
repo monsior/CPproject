@@ -11,26 +11,33 @@ void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 {
 	if (active)
 	{
-		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) - 1].makeFieldInactive(); 
-		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75)].makeFieldInactive();
-		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) + 1].makeFieldInactive();
-		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) - 1].makeFieldInactive();
-		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) + 1].makeFieldInactive();
-		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) - 1].makeFieldInactive();
-		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75)].makeFieldInactive();
-		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) + 1].makeFieldInactive();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+
+				if (isNeighbour(1, j, mousePos.x / 100, mousePos.y / 75))
+				{
+					(*p_field)[1][j].makeFieldInactive();
+				}
+			}
+		}
 		makeInactive();
 	}
 	else
 	{
-		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) - 1].makeFieldActive();
-		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75)].makeFieldActive();
-		(*p_field)[(mousePos.x / 100) - 1][(mousePos.y / 75) + 1].makeFieldActive();
-		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) - 1].makeFieldActive();
-		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75) + 1].makeFieldActive();
-		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) - 1].makeFieldActive();
-		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75)].makeFieldActive();
-		(*p_field)[(mousePos.x / 100) + 1][(mousePos.y / 75) + 1].makeFieldActive();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+			
+				if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
+				{
+					(*p_field)[i][j].makeFieldActive();
+				}
+			}
+		}
+
 		makeActive();
 	}
 }
@@ -39,7 +46,11 @@ void meleeGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
 {
 	if ((*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].possibleMove)
 	{
-		sprite.setPosition(((mousePos.x / 100)*100), ((mousePos.y / 75))*75);
+
+
+
+		sprite.setPosition(((mousePos.x / 100) * 100), ((mousePos.y / 75)) * 75);
+		
 		for (int i = 0; i < 8; i++)
 		{
 			for (int j = 0; j < 8; j++)
