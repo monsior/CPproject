@@ -13,6 +13,7 @@ int main()
 
 	Field field[8][8];
 	Field(*p_field)[8][8] = &field;
+	field[2][2].makeWater();
 	
 	meleeGroundMech mech;
 

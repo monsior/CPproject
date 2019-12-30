@@ -16,9 +16,12 @@ void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 			for (int j = 0; j < 8; j++)
 			{
 
-				if (isNeighbour(1, j, mousePos.x / 100, mousePos.y / 75))
+				if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
 				{
-					(*p_field)[1][j].makeFieldInactive();
+					if ((*p_field)[i][j].getType() == "ground")
+					{
+						(*p_field)[i][j].makeFieldInactive();
+					}
 				}
 			}
 		}
@@ -33,7 +36,10 @@ void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 			
 				if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
 				{
-					(*p_field)[i][j].makeFieldActive();
+					if ((*p_field)[i][j].getType() == "ground")
+					{
+						(*p_field)[i][j].makeFieldActive();
+					}
 				}
 			}
 		}

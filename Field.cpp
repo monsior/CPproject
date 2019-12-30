@@ -7,6 +7,7 @@ Field::Field()
 	sprite.setPosition(0, 0);
 	sprite.setTexture(texture);
 	possibleMove = false;
+	fieldType = "ground";
 }
 
 void Field::draw(sf::RenderTarget& target, sf::RenderStates state) const
@@ -21,15 +22,8 @@ void Field::setPosition(float t_X, float t_Y)
 
 void Field::makeFieldActive()
 {
-	//if (sprite.getPosition().x >= 0 && sprite.getPosition().x <= 800 && sprite.getPosition().y > 0 && sprite.getPosition().y <= 600)
-	//{
-	//std::cout << sprite.getPosition().y;
-	
 	possibleMove = true;
 	sprite.setColor(sf::Color::Blue);
-	//}
-	//std::cout << sprite.getPosition().y << std::endl;
-	
 }
 
 void Field::makeFieldInactive()
@@ -41,4 +35,16 @@ void Field::makeFieldInactive()
 sf::Vector2f Field::getPosition()
 {
 	return sprite.getPosition();
+}
+
+void Field::makeWater() 
+{ 
+	texture.loadFromFile("water.png");
+	sprite.setTexture(texture);
+	fieldType = "water";
+}
+
+std::string Field::getType()
+{
+	return fieldType;
 }

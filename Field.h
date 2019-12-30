@@ -10,8 +10,11 @@ public:
 	void makeFieldInactive();
 	sf::Vector2f getPosition();
 	bool possibleMove;
+	void makeWater();
+	std::string getType();
 private:
 	sf::Texture texture;
 	sf::Sprite sprite;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
+	std::string fieldType;
 };
