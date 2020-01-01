@@ -1,8 +1,6 @@
 #include "Figure.h"
 #include <iostream>
 
-
-
 Figure::Figure()
 {
 	sprite.setPosition(0, 0);
@@ -41,13 +39,11 @@ bool Figure::isActive()
 void Figure::makeInactive()
 {
 	sprite.setColor(sf::Color::White);
-	//active = true; 
 }
 
 void Figure::makeActive()
 {
 	sprite.setColor(sf::Color(Dark, Dark, Dark));
-	//active = false;
 }
 
 
@@ -58,4 +54,14 @@ bool Figure::isNeighbour(int x, int y, int n_X, int n_Y)
 		return true;
 	}
 	return false;
+}
+
+int Figure::getPositionX() 
+{
+	return sprite.getPosition().x;
+}
+
+int Figure::getPositionY()
+{
+	return sprite.getPosition().y;
 }

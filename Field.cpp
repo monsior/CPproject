@@ -3,8 +3,8 @@
 
 Field::Field()
 {
-	texture.loadFromFile("field.png");
 	sprite.setPosition(0, 0);
+	texture.loadFromFile("field.png");
 	sprite.setTexture(texture);
 	possibleMove = false;
 	fieldType = "ground";

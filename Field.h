@@ -13,8 +13,9 @@ public:
 	void makeWater();
 	std::string getType();
 private:
-	sf::Texture texture;
-	sf::Sprite sprite;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 	std::string fieldType;
+protected:
+	sf::Texture texture;
+	sf::Sprite sprite;
 };

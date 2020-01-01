@@ -135,14 +135,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Building.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="enemyGround.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="meleeGroundMech.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Building.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="enemyGround.h" />
     <ClInclude Include="meleeGroundMech.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

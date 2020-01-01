@@ -1,5 +1,4 @@
 #include "meleeGroundMech.h"
-#include <iostream>
 
 meleeGroundMech::meleeGroundMech()
 {
@@ -15,7 +14,6 @@ void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 		{
 			for (int j = 0; j < 8; j++)
 			{
-
 				if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
 				{
 					if ((*p_field)[i][j].getType() == "ground")
@@ -33,7 +31,7 @@ void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 		{
 			for (int j = 0; j < 8; j++)
 			{
-			
+
 				if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
 				{
 					if ((*p_field)[i][j].getType() == "ground")
@@ -43,7 +41,6 @@ void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 				}
 			}
 		}
-
 		makeActive();
 	}
 }
@@ -52,9 +49,6 @@ void meleeGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
 {
 	if ((*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].possibleMove)
 	{
-
-
-
 		sprite.setPosition(((mousePos.x / 100) * 100), ((mousePos.y / 75)) * 75);
 		
 		for (int i = 0; i < 8; i++)
@@ -66,7 +60,6 @@ void meleeGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
 		}
 		makeInactive();
 	}
-	
 }
 
 

@@ -3,6 +3,8 @@
 #include "Figure.h"
 #include "meleeGroundMech.h"
 #include <iostream>
+#include "enemyGround.h"
+#include "Building.h"
 
 constexpr auto windowsHeight = 800.f;
 constexpr auto windowsWidth = 600.f;
@@ -14,10 +16,13 @@ int main()
 	Field field[8][8];
 	Field(*p_field)[8][8] = &field;
 	field[2][2].makeWater();
+	Building building(100, 75);
 	
 	meleeGroundMech mech;
+	enemyGround enemy;
 
 	mech.setPosition(300,150);
+	enemy.setPosition(600, 150);
 
 
 	for (int i = 0; i < 8; i++)
@@ -27,8 +32,6 @@ int main()
 			field[i][j].setPosition((windowsHeight / 8 * i), (windowsWidth / 8 * j));
 		}
 	}
-
-
 
 	while (window.isOpen())
 	{
@@ -44,7 +47,7 @@ int main()
 
 			case sf::Event::MouseButtonPressed:
 
-					if (mousePos.x > mech.sprite.getPosition().x && mousePos.x < mech.sprite.getPosition().x + 100 && mousePos.y > mech.sprite.getPosition().y&& mousePos.y < mech.sprite.getPosition().y + 75)
+					if (mousePos.x > mech.getPositionX() && mousePos.x < mech.getPositionX() + 100 && mousePos.y > mech.getPositionY() && mousePos.y < mech.getPositionY() + 75)
 					{
 						mech.selectFigure(p_field, mousePos);
 					}
@@ -65,6 +68,8 @@ int main()
 		}
 
 		window.draw(mech);
+		window.draw(enemy);
+		window.draw(building);
 		window.display();
 	}
 
