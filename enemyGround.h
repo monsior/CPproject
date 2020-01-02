@@ -8,6 +8,6 @@ class enemyGround : public Figure
 {
 public:
 	enemyGround();
-	void move(Building building);
+	void move(Building(*p_building)[2]);
 };
 

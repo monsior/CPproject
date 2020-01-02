@@ -16,7 +16,13 @@ int Building::getPositionX()
 {
 	return sprite.getPosition().x;
 }
+
 int Building::getPositionY()
 {
 	return sprite.getPosition().y;
+}
+
+void Building::setPosition(int x, int y)
+{
+	sprite.setPosition(x, y);
 }

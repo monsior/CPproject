@@ -18,12 +18,16 @@ int main()
 	Field field[8][8];
 	Field(*p_field)[8][8] = &field;
 	field[2][2].makeWater();
-	Building building(100, 75);
+
+	Building building[2];
+	Building(*p_building)[2] = &building;
+	building[0].setPosition(100, 75);
+	building[1].setPosition(400, 150);
 	
 	meleeGroundMech mech;
 	enemyGround enemy;
 
-	mech.setPosition(300,150);
+	mech.setPosition(300, 150);
 	enemy.setPosition(600, 150);
 
 
@@ -55,7 +59,7 @@ int main()
 					}
 
 					mech.move(p_field, mousePos);
-					enemy.move(building);
+					enemy.move(p_building);
 
 				break;
 			}
@@ -72,7 +76,8 @@ int main()
 
 		window.draw(mech);
 		window.draw(enemy);
-		window.draw(building);
+		window.draw(building[0]);
+		window.draw(building[1]);
 		window.display();
 	}
 

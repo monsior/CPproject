@@ -1,2 +1,4 @@
 ﻿  enemyGround.cpp
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\enemyGround.cpp(13,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\enemyGround.cpp(19,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   SFMLGame.vcxproj -> C:\Users\Pawel\source\repos\SFMLGame\Debug\SFMLGame.exe
