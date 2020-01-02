@@ -13,10 +13,13 @@ void enemyGround::move(Building(*p_building)[2])
 	int distance = sqrt(((*p_building)[0].getPositionX() - sprite.getPosition().x) * ((*p_building)[0].getPositionX() - sprite.getPosition().x) + ((*p_building)[0].getPositionY() - sprite.getPosition().y) * ((*p_building)[0].getPositionY() - sprite.getPosition().y));
 	for (int i = 0; i < 2; i++)
 	{
-		if (distance > sqrt(((*p_building)[i].getPositionX() - sprite.getPosition().x)* ((*p_building)[i].getPositionX() - sprite.getPosition().x) + ((*p_building)[i].getPositionY() - sprite.getPosition().y) * ((*p_building)[i].getPositionY() - sprite.getPosition().y)))
+		if (!(*p_building)[i].getDestroyed())
 		{
-			closestBuilding = i;
-			distance = sqrt(((*p_building)[i].getPositionX() - sprite.getPosition().x) * ((*p_building)[i].getPositionX() - sprite.getPosition().x) + ((*p_building)[i].getPositionY() - sprite.getPosition().y) * ((*p_building)[i].getPositionY() - sprite.getPosition().y));
+			if (distance > sqrt(((*p_building)[i].getPositionX() - sprite.getPosition().x) * ((*p_building)[i].getPositionX() - sprite.getPosition().x) + ((*p_building)[i].getPositionY() - sprite.getPosition().y) * ((*p_building)[i].getPositionY() - sprite.getPosition().y)))
+			{
+				closestBuilding = i;
+				distance = sqrt(((*p_building)[i].getPositionX() - sprite.getPosition().x) * ((*p_building)[i].getPositionX() - sprite.getPosition().x) + ((*p_building)[i].getPositionY() - sprite.getPosition().y) * ((*p_building)[i].getPositionY() - sprite.getPosition().y));
+			}
 		}
 	}
 	if (!playerTurn)
@@ -44,4 +47,9 @@ void enemyGround::move(Building(*p_building)[2])
 		
 	}
 	playerTurn = true;
+	for (int i = 0; i < 2; i++)
+	{
+		if (sprite.getPosition().x == (*p_building)[i].getPositionX() && sprite.getPosition().y == (*p_building)[i].getPositionY())
+			(*p_building)[i].destroy();
+	}
 }

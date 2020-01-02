@@ -8,9 +8,12 @@ public:
 	int getPositionX();
 	int getPositionY();
 	void setPosition(int x, int y);
+	void destroy();
+	bool getDestroyed();
 private:
 	sf::Texture texture;
 	sf::Sprite sprite;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
+	bool destroyed;
 };
 

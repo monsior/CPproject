@@ -5,6 +5,7 @@ Building::Building(int x, int y)
 	sprite.setPosition(x, y);
 	texture.loadFromFile("Building.png");
 	sprite.setTexture(texture);
+	destroyed = false;
 }
 
 void Building::draw(sf::RenderTarget& target, sf::RenderStates state) const
@@ -25,4 +26,15 @@ int Building::getPositionY()
 void Building::setPosition(int x, int y)
 {
 	sprite.setPosition(x, y);
+}
+
+void Building::destroy()
+{
+	sprite.setColor(sf::Color::Black);
+	destroyed = true;
+}
+
+bool Building::getDestroyed()
+{
+	return destroyed;
 }
