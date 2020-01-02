@@ -11,3 +11,12 @@ void Building::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
 	target.draw(this->sprite, state);
 }
+
+int Building::getPositionX()
+{
+	return sprite.getPosition().x;
+}
+int Building::getPositionY()
+{
+	return sprite.getPosition().y;
+}

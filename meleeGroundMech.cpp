@@ -8,40 +8,43 @@ meleeGroundMech::meleeGroundMech()
 
 void meleeGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 {
-	if (active)
+	if (playerTurn)
 	{
-		for (int i = 0; i < 8; i++)
+		if (active)
 		{
-			for (int j = 0; j < 8; j++)
+			for (int i = 0; i < 8; i++)
 			{
-				if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
+				for (int j = 0; j < 8; j++)
 				{
-					if ((*p_field)[i][j].getType() == "ground")
+					if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
 					{
-						(*p_field)[i][j].makeFieldInactive();
+						if ((*p_field)[i][j].getType() == "ground")
+						{
+							(*p_field)[i][j].makeFieldInactive();
+						}
 					}
 				}
 			}
+			makeInactive();
 		}
-		makeInactive();
-	}
-	else
-	{
-		for (int i = 0; i < 8; i++)
+		else
 		{
-			for (int j = 0; j < 8; j++)
+			for (int i = 0; i < 8; i++)
 			{
+				for (int j = 0; j < 8; j++)
+				{
 
-				if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
-				{
-					if ((*p_field)[i][j].getType() == "ground")
+					if (isNeighbour(i, j, mousePos.x / 100, mousePos.y / 75))
 					{
-						(*p_field)[i][j].makeFieldActive();
+						if ((*p_field)[i][j].getType() == "ground")
+						{
+							(*p_field)[i][j].makeFieldActive();
+						}
 					}
 				}
 			}
+			makeActive();
 		}
-		makeActive();
 	}
 }
 
@@ -59,6 +62,7 @@ void meleeGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
 			}
 		}
 		makeInactive();
+		playerTurn = false;
 	}
 }
 

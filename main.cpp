@@ -8,6 +8,8 @@
 
 constexpr auto windowsHeight = 800.f;
 constexpr auto windowsWidth = 600.f;
+bool playerTurn = true;
+bool computerTurn = false;
 
 int main()
 {
@@ -51,8 +53,9 @@ int main()
 					{
 						mech.selectFigure(p_field, mousePos);
 					}
-					mech.move(p_field, mousePos);
 
+					mech.move(p_field, mousePos);
+					enemy.move(building);
 
 				break;
 			}

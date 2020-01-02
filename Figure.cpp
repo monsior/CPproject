@@ -1,5 +1,4 @@
 #include "Figure.h"
-#include <iostream>
 
 Figure::Figure()
 {

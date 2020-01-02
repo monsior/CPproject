@@ -1,6 +1,8 @@
 #pragma once
 #include "Figure.h"
 
+extern bool playerTurn;
+
 class meleeGroundMech : public Figure
 {
 public:

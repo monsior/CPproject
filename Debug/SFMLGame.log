@@ -1,4 +1,2 @@
-﻿  meleeGroundMech.cpp
-C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\meleeGroundMech.cpp(52,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\meleeGroundMech.cpp(52,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  enemyGround.cpp
   SFMLGame.vcxproj -> C:\Users\Pawel\source\repos\SFMLGame\Debug\SFMLGame.exe
