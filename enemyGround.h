@@ -6,8 +6,10 @@ extern bool playerTurn;
 
 class enemyGround : public Figure
 {
+	bool dead;
 public:
 	enemyGround();
-	void move(Building(*p_building)[2]);
+	void move(Building(*p_building)[3]);
+	bool setDead();
 };
 

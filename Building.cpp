@@ -25,7 +25,7 @@ int Building::getPositionY()
 
 void Building::setPosition(int x, int y)
 {
-	sprite.setPosition(x, y);
+	sprite.setPosition(100 * x, 75 * y);
 }
 
 void Building::destroy()

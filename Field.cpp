@@ -48,3 +48,8 @@ std::string Field::getType()
 {
 	return fieldType;
 }
+
+void Field::setType(std::string type)
+{
+	fieldType = type;
+}

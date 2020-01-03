@@ -18,6 +18,7 @@ public:
 private:
 	bool active;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
+	void changeFieldType(Field(*p_field)[8][8]);
 protected:
 	bool isNeighbour(int x, int y, int n_X, int n_Y); 
 	sf::Sprite sprite;

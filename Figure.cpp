@@ -27,7 +27,7 @@ void Figure::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
 
 void Figure::setPosition(float t_X, float t_Y)
 {
-	sprite.setPosition(t_X, t_Y);
+	sprite.setPosition(100 * t_X, 75 * t_Y);
 }
 
 bool Figure::isActive()
@@ -63,4 +63,21 @@ int Figure::getPositionX()
 int Figure::getPositionY()
 {
 	return sprite.getPosition().y;
+}
+
+void Figure::changeFieldType(Field(*p_field)[8][8])
+{
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			//if ((*p_field)[i][j].getPosition().x == sprite.getPosition().x && (*p_field)[i][j].getPosition().y == sprite.getPosition().y)
+			//{
+				(*p_field)[getPositionX() / 100][(getPositionY() / 75)].setType("figure");
+				(*p_field)[1][1].makeWater();
+			//}
+		}
+	}
+
+	
 }

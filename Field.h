@@ -12,7 +12,8 @@ public:
 	bool possibleMove;
 	void makeWater();
 	std::string getType();
-private:
+	void setType(std::string type);
+private: 
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 	std::string fieldType;
 protected:
