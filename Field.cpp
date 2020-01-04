@@ -8,6 +8,7 @@ Field::Field()
 	sprite.setTexture(texture);
 	possibleMove = false;
 	fieldType = "ground";
+	inRange = false;
 }
 
 void Field::draw(sf::RenderTarget& target, sf::RenderStates state) const
@@ -30,6 +31,13 @@ void Field::makeFieldInactive()
 {
 	possibleMove = false;
 	sprite.setColor(sf::Color::White);
+}
+
+void Field::makeFieldInRange()
+{
+	//possibleMove = true;
+	sprite.setColor(sf::Color::Red);
+	inRange = true;
 }
 
 sf::Vector2f Field::getPosition()

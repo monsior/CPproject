@@ -1,4 +1,4 @@
-﻿  main.cpp
-C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\main.cpp(16,55): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
-C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\main.cpp(16,40): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
+﻿  rangedGroundMech.cpp
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\rangedGroundMech.cpp(58,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\rangedGroundMech.cpp(58,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SFMLGame.vcxproj -> C:\Users\Pawel\source\repos\SFMLGame\Debug\SFMLGame.exe

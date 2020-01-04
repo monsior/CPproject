@@ -10,7 +10,6 @@ public:
 	bool isActive();
 	void makeInactive();
 	void makeActive();
-	//friend class meleeGroundMech;
 	sf::Uint8 Dark = 150;
 	int getPositionX();
 	int getPositionY();
