@@ -1,4 +1,16 @@
-﻿  rangedGroundMech.cpp
-C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\rangedGroundMech.cpp(58,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\rangedGroundMech.cpp(58,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Figure.cpp
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(48,29): warning C4244: 'return': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(48,29): warning C4244:         with
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(48,29): warning C4244:         [
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(48,29): warning C4244:             T=float
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(48,29): warning C4244:         ]
+  meleeGroundMech.cpp
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(53,29): warning C4244: 'return': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(53,29): warning C4244:         with
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(53,29): warning C4244:         [
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(53,29): warning C4244:             T=float
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\Figure.cpp(53,29): warning C4244:         ]
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\meleeGroundMech.cpp(54,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+C:\Users\Pawel\source\repos\SFMLGame\SFMLGame\meleeGroundMech.cpp(54,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SFMLGame.vcxproj -> C:\Users\Pawel\source\repos\SFMLGame\Debug\SFMLGame.exe

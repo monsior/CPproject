@@ -24,11 +24,13 @@ bool Figure::isActive()
 void Figure::makeInactive()
 {
 	sprite.setColor(sf::Color::White);
+	active = false;
 }
 
 void Figure::makeActive()
 {
 	sprite.setColor(sf::Color(Dark, Dark, Dark));
+	active = true;
 }
 
 

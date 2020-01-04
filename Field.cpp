@@ -35,7 +35,6 @@ void Field::makeFieldInactive()
 
 void Field::makeFieldInRange()
 {
-	//possibleMove = true;
 	sprite.setColor(sf::Color::Red);
 	inRange = true;
 }

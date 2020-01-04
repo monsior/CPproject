@@ -53,19 +53,22 @@ void rangedGroundMech::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos
 
 void rangedGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
 {
-	if ((*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].possibleMove)
+	if (active)
 	{
-		sprite.setPosition(((mousePos.x / 100) * 100), ((mousePos.y / 75)) * 75);
-
-		for (int i = 0; i < 8; i++) 
+		if ((*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].possibleMove)
 		{
-			for (int j = 0; j < 8; j++)
+			sprite.setPosition(((mousePos.x / 100) * 100), ((mousePos.y / 75)) * 75);
+
+			for (int i = 0; i < 8; i++)
 			{
-				((*p_field)[(i)][j]).makeFieldInactive();
+				for (int j = 0; j < 8; j++)
+				{
+					((*p_field)[(i)][j]).makeFieldInactive();
+				}
 			}
+			makeInactive();
+			playerTurn = false;
 		}
-		makeInactive();
-		playerTurn = false;
 	}
 }
 

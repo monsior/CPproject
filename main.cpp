@@ -32,12 +32,12 @@ int main()
 	building[1].setPosition(6, 0);
 	building[2].setPosition(1, 6);
 	
-	//meleeGroundMech mech;
+	meleeGroundMech mech;
 	rangedGroundMech ranged;
 	enemyGround enemy[3];
 	enemyGround(*p_enemy)[3] = &enemy;
 
-	//mech.setPosition(4, 2);
+	mech.setPosition(4, 2);
 	ranged.setPosition(0, 7);
 	enemy[0].setPosition(3, 1);
 	enemy[1].setPosition(7, 4);
@@ -67,15 +67,15 @@ int main()
 			case sf::Event::MouseButtonPressed:
 				if (playerTurn)
 				{
-					//if (mousePos.x > mech.getPositionX() && mousePos.x < mech.getPositionX() + 100 && mousePos.y > mech.getPositionY() && mousePos.y < mech.getPositionY() + 75)
-					//{
-					//	mech.selectFigure(p_field, mousePos);
-					//}
+					if (mousePos.x > mech.getPositionX() && mousePos.x < mech.getPositionX() + 100 && mousePos.y > mech.getPositionY() && mousePos.y < mech.getPositionY() + 75)
+					{
+						mech.selectFigure(p_field, mousePos);
+					}
 					if (mousePos.x > ranged.getPositionX() && mousePos.x < ranged.getPositionX() + 100 && mousePos.y > ranged.getPositionY() && mousePos.y < ranged.getPositionY() + 75)
 					{
 						ranged.selectFigure(p_field, mousePos, p_enemy);
 					}
-						//mech.move(p_field, mousePos, p_enemy);
+						mech.move(p_field, mousePos, p_enemy);
 						ranged.move(p_field, mousePos);
 						ranged.attack(p_enemy, mousePos);
 						//playerTurn = false;
@@ -101,7 +101,7 @@ int main()
 			}
 		}
 
-		//window.draw(mech);
+		window.draw(mech);
 		window.draw(ranged);
 		window.draw(enemy[0]);
 		window.draw(enemy[1]);
