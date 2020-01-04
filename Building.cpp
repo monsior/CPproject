@@ -28,7 +28,7 @@ void Building::setPosition(int x, int y)
 	sprite.setPosition(100 * x, 75 * y);
 }
 
-void Building::destroy()
+void Building::operator --()
 {
 	sprite.setColor(sf::Color::Black);
 	destroyed = true;

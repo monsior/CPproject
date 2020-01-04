@@ -2,7 +2,7 @@
 #include "Figure.h"
 #include "Building.h"
 
-extern bool playerTurn;
+//extern bool playerTurn;
 
 class enemyGround : public Figure
 {
@@ -10,6 +10,6 @@ class enemyGround : public Figure
 public:
 	enemyGround();
 	void move(Building(*p_building)[3]);
-	bool setDead();
+	void operator --();
 };
 

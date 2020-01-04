@@ -11,20 +11,6 @@ void Figure::draw(sf::RenderTarget& target, sf::RenderStates state) const
 	target.draw(this->sprite, state);
 }
 
-void Figure::selectFigure(Field(*p_field)[8][8], sf::Vector2i mousePos)
-{
-	if (active)
-	{
-		(*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].makeFieldInactive();
-		makeActive();
-	}
-	else
-	{
-		(*p_field)[mousePos.x / 100][mousePos.y / 75].makeFieldActive();
-		makeInactive();
-	}
-}
-
 void Figure::setPosition(float t_X, float t_Y)
 {
 	sprite.setPosition(100 * t_X, 75 * t_Y);

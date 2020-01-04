@@ -5,11 +5,11 @@
 #include <iostream>
 #include "enemyGround.h"
 #include "Building.h"
+#include "rangedGroundMech.h"
 
 constexpr auto windowsHeight = 800.f;
 constexpr auto windowsWidth = 600.f;
 bool playerTurn = true;
-bool computerTurn = false;
 
 int main()
 {
@@ -33,9 +33,12 @@ int main()
 	building[2].setPosition(1, 6);
 	
 	meleeGroundMech mech;
+	rangedGroundMech ranged;
 	enemyGround enemy[3];
+	enemyGround(*p_enemy)[3] = &enemy;
 
-	//mech.setPosition(300, 150);
+	mech.setPosition(4, 2);
+	//ranged.setPosition(0, 7);
 	enemy[0].setPosition(3, 1);
 	enemy[1].setPosition(7, 4);
 	enemy[2].setPosition(6, 7);
@@ -53,6 +56,7 @@ int main()
 	{
 		sf::Event event;
 		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+		//mech.attack(p_enemy, mousePos);
 		while (window.pollEvent(event))
 		{
 			switch (event.type)
@@ -62,19 +66,30 @@ int main()
 				break;
 
 			case sf::Event::MouseButtonPressed:
-
+				if (playerTurn)
+				{
 					if (mousePos.x > mech.getPositionX() && mousePos.x < mech.getPositionX() + 100 && mousePos.y > mech.getPositionY() && mousePos.y < mech.getPositionY() + 75)
 					{
 						mech.selectFigure(p_field, mousePos);
 					}
-
-					mech.move(p_field, mousePos);
-					enemy[0].move(p_building);
-					enemy[1].move(p_building);
-					enemy[2].move(p_building);
-					playerTurn = true;
-
+					//if (mousePos.x > ranged.getPositionX() && mousePos.x < ranged.getPositionX() + 100 && mousePos.y > ranged.getPositionY() && mousePos.y < ranged.getPositionY() + 75)
+					//{
+					//	ranged.selectFigure(p_field, mousePos);
+					//}
+						mech.move(p_field, mousePos, p_enemy);
+						//ranged.move(p_field, mousePos);
+						//playerTurn = false;
+						//sf::Time t1 = sf::seconds(1);
+						//sf::sleep(t1);
+				}
 				break;
+			}
+			if (!playerTurn)
+			{
+				enemy[0].move(p_building);
+				enemy[1].move(p_building);
+				enemy[2].move(p_building);
+				playerTurn = true;
 			}
 		}
 
@@ -88,6 +103,7 @@ int main()
 		}
 
 		window.draw(mech);
+		//window.draw(ranged);
 		window.draw(enemy[0]);
 		window.draw(enemy[1]);
 		window.draw(enemy[2]);

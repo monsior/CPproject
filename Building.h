@@ -8,7 +8,7 @@ public:
 	int getPositionX();
 	int getPositionY();
 	void setPosition(int x, int y);
-	void destroy();
+	void operator --();
 	bool getDestroyed();
 private:
 	sf::Texture texture;

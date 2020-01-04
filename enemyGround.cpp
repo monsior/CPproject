@@ -26,8 +26,6 @@ void enemyGround::move(Building(*p_building)[3])
 
 	if (!dead)
 	{
-		if (!playerTurn)
-		{
 			// move left
 			if (sprite.getPosition().x > (*p_building)[closestBuilding].getPositionX())
 			{
@@ -48,13 +46,17 @@ void enemyGround::move(Building(*p_building)[3])
 			{
 				sprite.setPosition(sprite.getPosition().x, sprite.getPosition().y + 75);
 			}
-
-		}
 	}
 	//playerTurn = true;
 	for (int i = 0; i < 3; i++)
 	{
 		if (sprite.getPosition().x == (*p_building)[i].getPositionX() && sprite.getPosition().y == (*p_building)[i].getPositionY())
-			(*p_building)[i].destroy();
+			--(*p_building)[i];
 	}
+}
+
+void enemyGround::operator --()
+{
+	sprite.setColor(sf::Color::Red);
+	dead = true;
 }
