@@ -11,7 +11,7 @@ enemyGround::enemyGround()
 void enemyGround::move(Building(*p_building)[3])
 {
 	int closestBuilding = 0;
-	int distance = sqrt(((*p_building)[0].getPositionX() - sprite.getPosition().x) * ((*p_building)[0].getPositionX() - sprite.getPosition().x) + ((*p_building)[0].getPositionY() - sprite.getPosition().y) * ((*p_building)[0].getPositionY() - sprite.getPosition().y));
+	float distance = sqrt(((*p_building)[0].getPositionX() - sprite.getPosition().x) * ((*p_building)[0].getPositionX() - sprite.getPosition().x) + ((*p_building)[0].getPositionY() - sprite.getPosition().y) * ((*p_building)[0].getPositionY() - sprite.getPosition().y));
 	for (int i = 0; i < 3; i++)
 	{
 		if (!(*p_building)[i].getDestroyed())
@@ -59,4 +59,9 @@ void enemyGround::operator --()
 {
 	sprite.setColor(sf::Color::Red);
 	dead = true;
+}
+
+bool enemyGround::isDead()
+{
+	return dead;
 }

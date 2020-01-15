@@ -1,6 +1,7 @@
 #include "Building.h"
+#include <iostream>
 
-Building::Building(int x, int y)
+Building::Building(float x, float y)
 {
 	sprite.setPosition(x, y);
 	texture.loadFromFile("Building.png");
@@ -15,15 +16,15 @@ void Building::draw(sf::RenderTarget& target, sf::RenderStates state) const
 
 int Building::getPositionX()
 {
-	return sprite.getPosition().x;
+	return int(sprite.getPosition().x);
 }
 
 int Building::getPositionY()
 {
-	return sprite.getPosition().y;
+	return int(sprite.getPosition().y);
 }
 
-void Building::setPosition(int x, int y)
+void Building::setPosition(float x, float y)
 {
 	sprite.setPosition(100 * x, 75 * y);
 }
@@ -32,6 +33,9 @@ void Building::operator --()
 {
 	sprite.setColor(sf::Color::Black);
 	destroyed = true;
+	std::cout << "You've lost";
+	playerMeleeTurn = false;
+	playerRangedTurn = false;
 }
 
 bool Building::getDestroyed()

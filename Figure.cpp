@@ -6,6 +6,12 @@ Figure::Figure()
 	active = false;
 }
 
+Figure::~Figure()
+{
+	texture.loadFromFile("empty.png");
+	sprite.setTexture(texture);
+}
+
 void Figure::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
 	target.draw(this->sprite, state);

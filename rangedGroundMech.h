@@ -2,7 +2,7 @@
 #include "Figure.h"
 #include "enemyGround.h"
 
-extern bool playerTurn;
+extern bool playerRangedTurn;
 
 class rangedGroundMech : public Figure
 {

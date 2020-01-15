@@ -57,7 +57,7 @@ void rangedGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
 	{
 		if ((*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].possibleMove)
 		{
-			sprite.setPosition(((mousePos.x / 100) * 100), ((mousePos.y / 75)) * 75);
+			sprite.setPosition(float((mousePos.x / 100) * 100), float((mousePos.y / 75) * 75));
 
 			for (int i = 0; i < 8; i++)
 			{
@@ -67,7 +67,7 @@ void rangedGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos)
 				}
 			}
 			makeInactive();
-			playerTurn = false;
+			playerRangedTurn = false;
 		}
 	}
 }
@@ -89,7 +89,7 @@ void rangedGroundMech::attack(enemyGround(*p_enemy)[3], sf::Vector2i pixelPos)
 		if (pixelPos.x > (*p_enemy)[i].getPositionX() && pixelPos.x < (*p_enemy)[i].getPositionX() + 100 && pixelPos.y >(*p_enemy)[i].getPositionY() && pixelPos.y < (*p_enemy)[i].getPositionY() + 75 && (sprite.getPosition().x == (*p_enemy)[i].getPositionX() || sprite.getPosition().y == (*p_enemy)[i].getPositionY()))
 		{
 			--(*p_enemy)[i];
-			playerTurn = false;
+			playerRangedTurn = false;
 		}
 	}
 }

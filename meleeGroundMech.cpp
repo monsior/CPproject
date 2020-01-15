@@ -51,7 +51,7 @@ void meleeGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos, enemyGr
 	{
 		if ((*p_field)[(mousePos.x / 100)][(mousePos.y / 75)].possibleMove)
 		{
-			sprite.setPosition(((mousePos.x / 100) * 100), ((mousePos.y / 75)) * 75);
+			sprite.setPosition(float((mousePos.x / 100) * 100), float((mousePos.y / 75) * 75));
 			attack(p_enemy);
 
 			for (int i = 0; i < 8; i++)
@@ -62,7 +62,7 @@ void meleeGroundMech::move(Field(*p_field)[8][8], sf::Vector2i mousePos, enemyGr
 				}
 			}
 			makeInactive();
-			playerTurn = false;
+			playerMeleeTurn = false;
 		}
 	}
 }

@@ -7,13 +7,12 @@
 #include "Building.h"
 #include "rangedGroundMech.h"
 
-constexpr auto windowsHeight = 800.f;
-constexpr auto windowsWidth = 600.f;
-bool playerTurn = true;
+bool playerMeleeTurn = true;
+bool playerRangedTurn = true;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(windowsHeight, windowsWidth), "SFMLGame", sf::Style::Titlebar | sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(800, 600), "SFMLGame", sf::Style::Titlebar | sf::Style::Close);
 
 	Field field[8][8];
 	Field(*p_field)[8][8] = &field;
@@ -31,6 +30,10 @@ int main()
 	building[0].setPosition(0, 1);
 	building[1].setPosition(6, 0);
 	building[2].setPosition(1, 6);
+	for (int i = 0; i < 3; i++)
+	{
+		field[building[i].getPositionX()/100][building[i].getPositionY()/75].setType("building");
+	}
 	
 	meleeGroundMech mech;
 	rangedGroundMech ranged;
@@ -38,9 +41,9 @@ int main()
 	enemyGround(*p_enemy)[3] = &enemy;
 
 	mech.setPosition(4, 2);
-	ranged.setPosition(0, 7);
+	ranged.setPosition(0, 6);
 	enemy[0].setPosition(3, 1);
-	enemy[1].setPosition(7, 4);
+	enemy[1].setPosition(7, 3);
 	enemy[2].setPosition(6, 7);
 
 
@@ -48,7 +51,7 @@ int main()
 	{
 		for (int j = 0; j < 8; j++)
 		{
-			field[i][j].setPosition((windowsHeight / 8 * i), (windowsWidth / 8 * j));
+			field[i][j].setPosition(float(100 * i), float(75 * j));
 		}
 	}
 
@@ -56,6 +59,18 @@ int main()
 	{
 		sf::Event event;
 		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+		for (int i = 0; i < 3; i++)
+		{
+			if (building[i].getDestroyed())
+			{
+				return 0;
+			}
+		}
+		if (enemy[0].isDead() && enemy[1].isDead() && enemy[2].isDead())
+		{
+			return 0;
+		}
+
 		while (window.pollEvent(event))
 		{
 			switch (event.type)
@@ -65,30 +80,32 @@ int main()
 				break;
 
 			case sf::Event::MouseButtonPressed:
-				if (playerTurn)
+				if (playerMeleeTurn)
 				{
 					if (mousePos.x > mech.getPositionX() && mousePos.x < mech.getPositionX() + 100 && mousePos.y > mech.getPositionY() && mousePos.y < mech.getPositionY() + 75)
 					{
 						mech.selectFigure(p_field, mousePos);
 					}
+					mech.move(p_field, mousePos, p_enemy);
+				}
+				if (playerRangedTurn && !playerMeleeTurn)
+				{
 					if (mousePos.x > ranged.getPositionX() && mousePos.x < ranged.getPositionX() + 100 && mousePos.y > ranged.getPositionY() && mousePos.y < ranged.getPositionY() + 75)
 					{
 						ranged.selectFigure(p_field, mousePos, p_enemy);
 					}
-						mech.move(p_field, mousePos, p_enemy);
-						ranged.move(p_field, mousePos);
-						ranged.attack(p_enemy, mousePos);
-						//playerTurn = false;
-
+					ranged.move(p_field, mousePos);
+					ranged.attack(p_enemy, mousePos); 
 				}
 				break;
 			}
-			if (!playerTurn)
+			if (!playerMeleeTurn && !playerRangedTurn)
 			{
-				//enemy[0].move(p_building);
-				//enemy[1].move(p_building);
-				//enemy[2].move(p_building);
-				playerTurn = true;
+				enemy[0].move(p_building);
+				enemy[1].move(p_building);
+				enemy[2].move(p_building);
+				playerMeleeTurn = true;
+				playerRangedTurn = true;
 			}
 		}
 
@@ -111,6 +128,6 @@ int main()
 		window.draw(building[2]);
 		window.display();
 	}
-
+	window.clear();
 	return 0;
 }
